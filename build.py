@@ -64,13 +64,14 @@ for post in posts:
 
     image = ""
 
-if post["preview"]:
-    preview = post["preview"]
+    if post["preview"]:
+        preview = post["preview"]
 
-    if not (ROOT / preview).is_file():
-        raise FileNotFoundError(f"Preview image not found: {preview}")
+        if not (ROOT / preview).is_file():
+            raise FileNotFoundError(f"Preview image not found: {preview}")
 
-    image = f'<img src="{escape(preview)}" alt="">'
+        image = f'<img src="{escape(preview)}" alt="">'
+
     entries.append(f"""
         <div class="post">
             <a href="{post['url']}" class="preview">
@@ -96,4 +97,4 @@ html = before + start + "\n".join(entries) + end + after
 
 index.write_text(html, encoding="utf-8")
 
-print(f"Homepage updated with {len(posts)} posts.")
+print(f"Homepage updated with {len(entries)} posts.")
