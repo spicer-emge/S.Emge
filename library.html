@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Library - Spicer Emge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Spicer Emge</h1>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="drawings.html">Drawings</a>
+        <a href="library.html">Library</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <main>
+
+        <h2>Architectural Library</h2>
+
+       <div id="w9e2f7d698bc88d6b1101b4fdc4b41c42"></div><script type="text/javascript" charset="UTF-8" src="https://www.librarything.com/widget_get.php?userid=spiceremge&theID=w9e2f7d698bc88d6b1101b4fdc4b41c42"></script><noscript><a href="https://www.librarything.com/profile/spiceremge">My Library</a> at <a href="https://www.librarything.com">LibraryThing</a></noscript>
+    </main>
+
+</body>
+
+<footer>
+    <a href="colophon.html">Colophon</a>
+      <time id="clock"></time>
+</footer>
+
+<script>
+function updateClock() {
+    const now = new Date();
+
+    const date = [
+        now.getFullYear(),
+        String(now.getMonth() + 1).padStart(2, '0'),
+        String(now.getDate()).padStart(2, '0')
+    ].join('.');
+
+    const time = now.toLocaleTimeString('en-GB', {
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+
+    const zone = new Intl.DateTimeFormat('en-US', {
+        timeZoneName: 'short'
+    }).formatToParts(now)
+      .find(part => part.type === 'timeZoneName').value;
+
+    document.getElementById('clock').textContent =
+        `${date} — ${time} ${zone}`;
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+
+
+</html>
