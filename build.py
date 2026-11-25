@@ -64,9 +64,13 @@ for post in posts:
 
     image = ""
 
-    if post["preview"]:
-        image = f'<img src="{escape(quote(post["preview"]))}" alt="">'
+if post["preview"]:
+    preview = post["preview"]
 
+    if not (ROOT / preview).is_file():
+        raise FileNotFoundError(f"Preview image not found: {preview}")
+
+    image = f'<img src="{escape(preview)}" alt="">'
     entries.append(f"""
         <div class="post">
             <a href="{post['url']}" class="preview">
