@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="date" content="2026-05-20T18:07:00-0:00">
+    <meta name="timezone" content="MST">
+    <meta name="preview" content="images/Fire Tower/Web/Color Front">
+    <title>Rocky Mountain Fire Tower</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <h1>
+        <a href="../index.html">Spicer Emge</a>
+    </h1>
+
+     <nav>
+        <a href="../index.html">Home</a>
+        <a href="../drawings.html">Drawings</a>
+        <a href="../books.html">Library</a>
+        <a href="../about.html">About</a>
+    </nav>
+
+    <main>
+        <article>
+
+            <h2>Rocky Mountain Fire Tower</h2>
+
+            <time datetime="2026-05-20T18:07">
+                May 20, 2026 — 18:07
+            </time>
+
+            <p>
+                Write your text here.
+            </p>
+
+            <!-- Optional image
+            <figure>
+                <img src="images/filename.jpg" alt="">
+                <figcaption>Image caption.</figcaption>
+            </figure>
+            -->
+
+            <p>
+                Additional text here.
+            </p>
+
+        </article>
+    </main>
+
+</body>
+
+<footer>
+    <a href="../colophon.html">Colophon</a>
+      <time id="clock"></time>
+</footer>
+
+<script>
+function updateClock() {
+    const now = new Date();
+
+    const date = [
+        now.getFullYear(),
+        String(now.getMonth() + 1).padStart(2, '0'),
+        String(now.getDate()).padStart(2, '0')
+    ].join('.');
+
+    const time = now.toLocaleTimeString('en-GB', {
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+
+    const zone = new Intl.DateTimeFormat('en-US', {
+        timeZoneName: 'short'
+    }).formatToParts(now)
+      .find(part => part.type === 'timeZoneName').value;
+
+    document.getElementById('clock').textContent =
+        `${date} — ${time} ${zone}`;
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+
+
+</html>

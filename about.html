@@ -22,17 +22,49 @@
     <main>
         <p1>Spicer Emge is an Architect at Ruard Veltman Architecture and Interiors. 
             <br>
-            <br>He is Based in Denver, Colorado.<br>
+            <br>Based in Denver, Colorado.<br>
 
-            <br> He is Originally from Los Angeles, California. <br>
+            <br> Originally from Los Angeles, California. <br>
             
-            <br> He attended the University of Notre Dame Architecture School (2019).</p1>
+            <br> Attended the University of Notre Dame Architecture School (2019).</p1>
 </main>
 
 </body>
 
 <footer>
     <a href="colophon.html">Colophon</a>
+      <time id="clock"></time>
 </footer>
+
+<script>
+function updateClock() {
+    const now = new Date();
+
+    const date = [
+        now.getFullYear(),
+        String(now.getMonth() + 1).padStart(2, '0'),
+        String(now.getDate()).padStart(2, '0')
+    ].join('.');
+
+    const time = now.toLocaleTimeString('en-GB', {
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+
+    const zone = new Intl.DateTimeFormat('en-US', {
+        timeZoneName: 'short'
+    }).formatToParts(now)
+      .find(part => part.type === 'timeZoneName').value;
+
+    document.getElementById('clock').textContent =
+        `${date} — ${time} ${zone}`;
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+
 
 </html>

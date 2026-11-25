@@ -21,30 +21,66 @@
 
     <main>
 
+   <!-- POSTS START -->
         <div class="post">
-            <a href="rockymountainfiretower.html"class="preview">
-                A Rocky Mountain Fire Tower
-                <img src="images/Fire Tower/Web Images/Color Front.jpg">
-                </a>
-            <time datetime="2026-11-24T14:30:00-05:00">
-    2026.11.24 — 14:30:00 EST </time>
-            </div>
+            <a href="posts/welcome.html" class="preview">
+                Welcome
+                <img src="images/Thesis/South%20Elevation" alt="">
+            </a>
+            <time datetime="2026-11-25T19:23:00-07:00">
+                2026.11.25 — 19:23:00 MST
+            </time>
+        </div>
+    
 
-    <div class="post">
-            <a href="notes-on-drawing.html"class="preview">
-                A Welcome
-                <img src="images/Thesis Pictures/JPEG/South Elevation with new windows.jpg">
-                </a>
-            <time datetime="2026-11-24T14:30:00-05:00">
-    2026.11.24 — 14:30:00 EST </time>
-    </div>
+        <div class="post">
+            <a href="posts/rockymountainfiretower.html" class="preview">
+                Rocky Mountain Fire Tower
+                <img src="images/Fire%20Tower/Web/Color%20Front" alt="">
+            </a>
+            <time datetime="2026-05-20T18:07:00-06:00">
+                2026.05.20 — 18:07:00 MST
+            </time>
+        </div>
+    <!-- POSTS END -->
 
     </main>
 
-</body>
-
 <footer>
     <a href="colophon.html">Colophon</a>
+      <time id="clock"></time>
 </footer>
+
+<script>
+function updateClock() {
+    const now = new Date();
+
+    const date = [
+        now.getFullYear(),
+        String(now.getMonth() + 1).padStart(2, '0'),
+        String(now.getDate()).padStart(2, '0')
+    ].join('.');
+
+    const time = now.toLocaleTimeString('en-GB', {
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+
+    const zone = new Intl.DateTimeFormat('en-US', {
+        timeZoneName: 'short'
+    }).formatToParts(now)
+      .find(part => part.type === 'timeZoneName').value;
+
+    document.getElementById('clock').textContent =
+        `${date} — ${time} ${zone}`;
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+
+</body>
 
 </html>
