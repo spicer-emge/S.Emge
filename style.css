@@ -97,10 +97,8 @@ time {
     pointer-events: none;
 }
 
-@media (hover: hover) {
-    .preview:hover img {
-        display: block;
-    }
+.preview:hover img {
+    display: block;
 }
 
 main {
@@ -108,12 +106,6 @@ main {
     flex-direction: column;
 }
 
-footer {
-    margin-top: 80px;
-    padding: 20px 0;
-    border-top: 1px solid #333;
-    font-size: 13px;
-}
 
 footer a {
     color: #888;
