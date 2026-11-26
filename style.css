@@ -132,3 +132,11 @@ footer {
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
 }
+
+.blog-photos img {
+    width: 65%;
+    max-width: 900px;
+    height: auto;
+    display: block;
+    margin: 30px auto;
+}
